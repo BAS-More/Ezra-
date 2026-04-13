@@ -7,6 +7,7 @@
 import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { type MCPTool, getProjectCwd } from './types.js';
+import { validateIdentifier, validateText } from './validate-input.js';
 
 // Storage paths
 const STORAGE_DIR = '.claude-flow';
@@ -134,6 +135,14 @@ export const sessionTools: MCPTool[] = [
       required: ['name'],
     },
     handler: async (input) => {
+      // Validate user-provided input (#1425)
+      const vName = validateText(input.name, 'name', 256);
+      if (!vName.valid) return { success: false, error: vName.error };
+      if (input.description) {
+        const v = validateText(input.description, 'description');
+        if (!v.valid) return { success: false, error: v.error };
+      }
+
       const sessionId = `session-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 
       // Load related data based on options
@@ -187,6 +196,16 @@ export const sessionTools: MCPTool[] = [
       },
     },
     handler: async (input) => {
+      // Validate user-provided input (#1425)
+      if (input.sessionId) {
+        const v = validateIdentifier(input.sessionId, 'sessionId');
+        if (!v.valid) return { success: false, error: v.error };
+      }
+      if (input.name) {
+        const v = validateText(input.name, 'name', 256);
+        if (!v.valid) return { success: false, error: v.error };
+      }
+
       let session: SessionRecord | null = null;
 
       // Try to find by sessionId first
@@ -210,11 +229,33 @@ export const sessionTools: MCPTool[] = [
       }
 
       if (session) {
-        // Restore data to respective stores
+        // Restore data to respective stores (legacy JSON for backward compat)
         if (session.data?.memory) {
           const memoryDir = join(getProjectCwd(), STORAGE_DIR, 'memory');
           if (!existsSync(memoryDir)) mkdirSync(memoryDir, { recursive: true });
           writeFileSync(join(memoryDir, 'store.json'), JSON.stringify(session.data.memory, null, 2), 'utf-8');
+
+          // Also populate active sql.js SQLite database so memory-tools can find entries
+          try {
+            const { storeEntry } = await import('../memory/memory-initializer.js');
+            const memoryData = session.data.memory as { entries?: Record<string, { key?: string; id?: string; value?: string; content?: string; namespace?: string }> };
+            if (memoryData.entries) {
+              for (const entry of Object.values(memoryData.entries)) {
+                const key = entry.key || entry.id || '';
+                const value = entry.value || entry.content || '';
+                if (key && value) {
+                  await storeEntry({
+                    key,
+                    value,
+                    namespace: entry.namespace || 'restored',
+                    upsert: true,
+                  });
+                }
+              }
+            }
+          } catch {
+            // Legacy JSON restore is the fallback -- sql.js import may not be available
+          }
         }
         if (session.data?.tasks) {
           const taskDir = join(getProjectCwd(), STORAGE_DIR, 'tasks');
@@ -296,6 +337,10 @@ export const sessionTools: MCPTool[] = [
       required: ['sessionId'],
     },
     handler: async (input) => {
+      // Validate user-provided input (#1425)
+      const vId = validateIdentifier(input.sessionId, 'sessionId');
+      if (!vId.valid) return { success: false, error: vId.error };
+
       const sessionId = input.sessionId as string;
       const path = getSessionPath(sessionId);
 
@@ -327,6 +372,10 @@ export const sessionTools: MCPTool[] = [
       required: ['sessionId'],
     },
     handler: async (input) => {
+      // Validate user-provided input (#1425)
+      const vId = validateIdentifier(input.sessionId, 'sessionId');
+      if (!vId.valid) return { success: false, error: vId.error };
+
       const sessionId = input.sessionId as string;
       const session = loadSession(sessionId);
 
