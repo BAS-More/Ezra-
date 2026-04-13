@@ -1,20 +1,19 @@
 {
-  "name": "claude-flow",
+  "name": "ezra",
   "version": "3.5.52",
-  "description": "Ruflo - Enterprise AI agent orchestration for Claude Code. Deploy 60+ specialized agents in coordinated swarms with self-learning, fault-tolerant consensus, vector memory, and MCP integration",
+  "description": "Ezra (עזרא) - The Scribe Who Restores and Enforces Standards. Enterprise AI agent orchestration for Claude Code. Deploy 60+ specialized agents in coordinated swarms with self-learning, fault-tolerant consensus, vector memory, and MCP integration",
   "main": "dist/index.js",
   "type": "module",
   "bin": {
-    "claude-flow": "./bin/cli.js"
+    "ezra": "./bin/cli.js"
   },
-  "homepage": "https://github.com/ruvnet/claude-flow#readme",
+  "homepage": "https://github.com/BAS-More/ezra#readme",
   "bugs": {
-    "url": "https://github.com/ruvnet/claude-flow/issues",
-    "email": "support@ruv.io"
+    "url": "https://github.com/BAS-More/ezra/issues"
   },
   "funding": {
     "type": "github",
-    "url": "https://github.com/sponsors/ruvnet"
+    "url": "https://github.com/sponsors/BAS-More"
   },
   "files": [
     "bin/**",
@@ -86,10 +85,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ruvnet/claude-flow.git"
+    "url": "https://github.com/BAS-More/ezra.git"
   },
   "keywords": [
-    "ruvflow",
+    "ezra",
     "claude",
     "claude-code",
     "anthropic",
@@ -124,9 +123,8 @@
     "self-learning"
   ],
   "author": {
-    "name": "RuvNet",
-    "email": "ruv@ruv.io",
-    "url": "https://ruv.io"
+    "name": "BAS-More",
+    "url": "https://github.com/BAS-More"
   },
   "license": "MIT",
   "publishConfig": {

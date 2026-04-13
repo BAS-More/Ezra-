@@ -1,6 +1,6 @@
 /**
  * V3 CLI Cleanup Command
- * Removes project artifacts created by claude-flow/ruflo
+ * Removes project artifacts created by claude-flow/ezra
  *
  * Created with ruv.io
  */
@@ -11,7 +11,7 @@ import { existsSync, statSync, rmSync, readdirSync } from 'fs';
 import { join } from 'path';
 
 /**
- * Artifact directories and files that claude-flow/ruflo may create
+ * Artifact directories and files that claude-flow/ezra may create
  */
 const ARTIFACT_DIRS = [
   { path: '.claude', description: 'Claude settings, helpers, agents' },
@@ -74,7 +74,7 @@ function formatSize(bytes: number): string {
  */
 export const cleanupCommand: Command = {
   name: 'cleanup',
-  description: 'Remove project artifacts created by claude-flow/ruflo',
+  description: 'Remove project artifacts created by claude-flow/ezra',
   aliases: ['clean'],
   options: [
     {

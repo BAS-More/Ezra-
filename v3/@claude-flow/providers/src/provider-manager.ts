@@ -59,7 +59,7 @@ interface ProviderMetrics {
 /**
  * Provider Manager - Orchestrates multiple LLM providers
  */
-/** SynthLang compression configuration for ruflo */
+/** SynthLang compression configuration for ezra */
 export interface SynthLangConfig {
   enabled: boolean;
   /** Minimum message length (chars) to compress (default: 200) */

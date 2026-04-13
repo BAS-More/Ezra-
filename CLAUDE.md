@@ -1,8 +1,8 @@
-# Claude Code Configuration - Ruflo v3.5
+# Claude Code Configuration - Ezra (עזרא)
 
-> **Ruflo v3.5** (2026-02-27) — First major stable release. Formerly "Claude Flow".
+> **Ezra** — The Scribe Who Restores and Enforces Standards. Fork of ruvnet/ruflo by BAS-More.
 > 5,900+ commits, 55 alpha iterations, 259 MCP tools, 60+ agents, 8 AgentDB controllers.
-> Packages: `@claude-flow/cli@3.5.0`, `claude-flow@3.5.0`, `ruflo@3.5.0`
+> Packages: `@claude-flow/cli@3.5.0`, `claude-flow@3.5.0`, `ezra@3.5.0`
 
 ## Behavioral Rules (Always Enforced)
 
@@ -830,9 +830,9 @@ npx claude-flow@v3alpha doctor --fix
 
 ### Publishing Rules
 
-- MUST publish ALL THREE packages when publishing CLI changes: `@claude-flow/cli`, `claude-flow`, AND `ruflo`
+- MUST publish ALL THREE packages when publishing CLI changes: `@claude-flow/cli`, `claude-flow`, AND `ezra`
 - MUST update ALL dist-tags for ALL THREE packages after publishing
-- Publish order: `@claude-flow/cli` first, then `claude-flow` (umbrella), then `ruflo` (alias umbrella)
+- Publish order: `@claude-flow/cli` first, then `claude-flow` (umbrella), then `ezra` (alias umbrella)
 - MUST run verification for ALL THREE before telling user publishing is complete
 
 ```bash
@@ -852,18 +852,18 @@ npm publish --tag v3alpha
 npm dist-tag add claude-flow@3.0.0-alpha.XXX latest
 npm dist-tag add claude-flow@3.0.0-alpha.XXX alpha
 
-# STEP 4: Publish ruflo umbrella (CRITICAL - DON'T FORGET!)
+# STEP 4: Publish ezra umbrella (CRITICAL - DON'T FORGET!)
 cd /workspaces/claude-flow/ruflo
 npm version 3.0.0-alpha.XXX --no-git-tag-version
 npm publish --tag alpha
-npm dist-tag add ruflo@3.0.0-alpha.XXX latest
+npm dist-tag add ezra@3.0.0-alpha.XXX latest
 ```
 
 **Verification (run before telling user):**
 ```bash
 npm view @claude-flow/cli dist-tags --json
 npm view claude-flow dist-tags --json
-npm view ruflo dist-tags --json
+npm view ezra dist-tags --json
 # ALL THREE packages need: alpha AND latest pointing to newest version
 ```
 
@@ -876,12 +876,12 @@ npm view ruflo dist-tags --json
 | `claude-flow` | `alpha` | `npx claude-flow@alpha` — EASY TO FORGET |
 | `claude-flow` | `latest` | `npx claude-flow@latest` |
 | `claude-flow` | `v3alpha` | `npx claude-flow@v3alpha` |
-| `ruflo` | `alpha` | `npx ruflo@alpha` — EASY TO FORGET |
-| `ruflo` | `latest` | `npx ruflo@latest` |
+| `ezra` | `alpha` | `npx ezra@alpha` — EASY TO FORGET |
+| `ezra` | `latest` | `npx ezra@latest` |
 
-- Never forget the `ruflo` package — it's a thin wrapper users run via `npx ruflo@alpha`
+- Never forget the `ezra` package — it's a thin wrapper users run via `npx ezra@alpha`
 - Never forget the umbrella `alpha` tag — users run `npx claude-flow@alpha`
-- `ruflo` source is in `/ruflo/` — it depends on `@claude-flow/cli`
+- `ezra` source is in `/ruflo/` — it depends on `@claude-flow/cli`
 
 ## Plugin Registry Maintenance (IPFS/Pinata)
 

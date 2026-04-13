@@ -1,6 +1,6 @@
 /**
  * @module dspy-modules
- * dspy.ts integration for ruflo v3 — ReAct and ProgramOfThought modules
+ * dspy.ts integration for ezra v3 — ReAct and ProgramOfThought modules
  * for enhanced agent reasoning capabilities.
  */
 import {
@@ -39,7 +39,7 @@ export function initDspyModules(config: DspyModuleConfig): void {
 
 /**
  * ReAct module for tool-using agents.
- * Replaces manual ReAct prompt patterns in ruflo agent definitions.
+ * Replaces manual ReAct prompt patterns in ezra agent definitions.
  * Provides structured Thought → Action → Observation loops.
  */
 export function createReActAgent(options: {

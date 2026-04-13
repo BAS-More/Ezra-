@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * RuFlo V3 Statusline Generator (Optimized)
+ * Ezra V3 Statusline Generator (Optimized)
  * Displays real-time V3 implementation progress and system status
  *
  * Usage: node statusline.cjs [--json] [--compact]
@@ -577,7 +577,7 @@ function generateStatusline() {
   const parts = [];
 
   // Branding
-  parts.push(`${c.bold}${c.brightPurple}\u258A RuFlo V3${c.reset}`);
+  parts.push(`${c.bold}${c.brightPurple}\u258A Ezra V3${c.reset}`);
 
   // User + swarm indicator
   const dot = swarm.coordinationActive ? `${c.brightGreen}\u25CF${c.reset}` : `${c.brightCyan}\u25CF${c.reset}`;
@@ -644,7 +644,7 @@ function generateDashboard() {
   const lines = [];
 
   // Header
-  let header = `${c.bold}${c.brightPurple}\u258A RuFlo V3 ${c.reset}`;
+  let header = `${c.bold}${c.brightPurple}\u258A Ezra V3 ${c.reset}`;
   header += `${swarm.coordinationActive ? c.brightCyan : c.dim}\u25CF ${c.brightCyan}${git.name}${c.reset}`;
   if (git.gitBranch) {
     header += `  ${c.dim}\u2502${c.reset}  ${c.brightBlue}\u23C7 ${git.gitBranch}${c.reset}`;

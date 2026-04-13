@@ -1,11 +1,11 @@
 {
-  "name": "ruflo",
+  "name": "ezra",
   "version": "3.5.52",
-  "description": "Ruflo - Enterprise AI agent orchestration platform. Deploy 60+ specialized agents in coordinated swarms with self-learning, fault-tolerant consensus, vector memory, and MCP integration",
+  "description": "Ezra - Enterprise AI agent orchestration platform. Deploy 60+ specialized agents in coordinated swarms with self-learning, fault-tolerant consensus, vector memory, and MCP integration",
   "main": "bin/ruflo.js",
   "type": "module",
   "bin": {
-    "ruflo": "./bin/ruflo.js"
+    "ezra": "./bin/ruflo.js"
   },
   "homepage": "https://github.com/ruvnet/claude-flow#readme",
   "bugs": {
@@ -47,10 +47,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ruvnet/claude-flow.git",
-    "directory": "ruflo"
+    "directory": "ezra"
   },
   "keywords": [
-    "ruflo",
+    "ezra",
     "claude-flow",
     "claude",
     "claude-code",
