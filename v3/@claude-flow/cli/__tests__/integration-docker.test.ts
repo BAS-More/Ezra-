@@ -456,7 +456,7 @@ describe('CLI Dockerfile (ezra:lite)', () => {
   });
 
   it('installs ezra globally in the build stage', () => {
-    expect(dockerContent).toContain('npm install -g ezra@latest');
+    expect(dockerContent).toContain('npm install -g ezra-flow@latest');
   });
 
   it('prunes heavy optional dependencies to reduce image size', () => {

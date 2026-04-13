@@ -333,7 +333,7 @@ Stage 2: RUNTIME
   └── Compress (~30MB → ~12MB)
 
 Stage 3: RUFLO
-  ├── npm pack ezra@latest --omit=optional
+  ├── npm pack ezra-flow@latest --omit=optional
   ├── Include all CLI commands + agent defs
   ├── Pre-configure MCP server
   └── Compress (~9MB → ~3MB)
@@ -540,7 +540,7 @@ Hot Update Flow:
 - **Offline-capable**: Full agent orchestration without internet (offline profile)
 - **Reproducible**: Same binary = same behavior everywhere
 - **Secure**: Encrypted keys, signed updates, container isolation
-- **Fast boot**: <5s from cold start (vs 35s for `npx ezra@latest`)
+- **Fast boot**: <5s from cold start (vs 35s for `npx ezra-flow@latest`)
 - **Verifiable**: Built-in 95-check suite proves every capability works
 - **Updatable**: Hot-patch sections without rebuilding entire appliance
 

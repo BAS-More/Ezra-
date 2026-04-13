@@ -210,7 +210,7 @@ async function checkMcpServers(): Promise<HealthCheck> {
         if (hasClaudeFlow) {
           return { name: 'MCP Servers', status: 'pass', message: `${count} servers (ezra configured)` };
         } else {
-          return { name: 'MCP Servers', status: 'warn', message: `${count} servers (ezra not found)`, fix: 'claude mcp add ezra -- npx -y ezra@latest mcp start' };
+          return { name: 'MCP Servers', status: 'warn', message: `${count} servers (ezra not found)`, fix: 'claude mcp add ezra -- npx -y ezra-flow@latest mcp start' };
         }
       } catch {
         // continue to next path
@@ -283,7 +283,7 @@ async function checkVersionFreshness(): Promise<HealthCheck> {
             if (
               pkg.version &&
               typeof pkg.name === 'string' &&
-              (pkg.name === '@claude-flow/cli' || pkg.name === 'claude-flow' || pkg.name === 'ruflo' || pkg.name === 'ezra')
+              (pkg.name === '@claude-flow/cli' || pkg.name === 'claude-flow' || pkg.name === 'ruflo' || pkg.name === 'ezra' || pkg.name === 'ezra-flow')
             ) {
               currentVersion = pkg.version;
               break;

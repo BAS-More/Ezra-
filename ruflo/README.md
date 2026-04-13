@@ -8,13 +8,13 @@ Enterprise AI agent orchestration platform. Deploy 60+ specialized agents in coo
 
 ```bash
 # Quick start
-npx ezra@latest init --wizard
+npx ezra-flow@latest init --wizard
 
 # Global install
-npm install -g ezra
+npm install -g ezra-flow
 
 # Add as MCP server
-claude mcp add ezra -- npx -y ezra@latest mcp start
+claude mcp add ezra -- npx -y ezra-flow@latest mcp start
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ ezra doctor                 # System diagnostics
 
 | Package | npm | CLI Command |
 |---------|-----|-------------|
-| `ezra` | [npmjs.com/package/ezra](https://www.npmjs.com/package/ezra) | `ezra` |
+| `ezra-flow` | [npmjs.com/package/ezra-flow](https://www.npmjs.com/package/ezra-flow) | `ezra` |
 | `claude-flow` | [npmjs.com/package/claude-flow](https://www.npmjs.com/package/claude-flow) | `claude-flow` |
 
 Both packages use `@claude-flow/cli` under the hood. Choose whichever you prefer.

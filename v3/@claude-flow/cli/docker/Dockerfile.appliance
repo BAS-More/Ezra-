@@ -25,7 +25,7 @@ WORKDIR /build
 # --omit=optional: skip heavy native deps (onnxruntime, better-sqlite3, etc.)
 # --ignore-scripts: skip postinstall scripts that may compile native addons
 # These keep the image under the 100MB target.
-RUN npm install -g ezra@latest \
+RUN npm install -g ezra-flow@latest \
       --omit=optional \
       --ignore-scripts \
       --no-audit \
@@ -119,7 +119,7 @@ COPY --from=build /staged/bin/ /usr/local/bin/
 COPY --from=build /usr/bin/dumb-init /usr/bin/dumb-init
 
 # Ensure bin symlinks resolve correctly
-RUN ln -sf /usr/local/lib/node_modules/ezra/bin/ezra.js /usr/local/bin/ezra 2>/dev/null || true \
+RUN ln -sf /usr/local/lib/node_modules/ezra-flow/bin/ezra.js /usr/local/bin/ezra 2>/dev/null || true \
     && chmod +x /usr/local/bin/ezra 2>/dev/null || true
 
 # Production environment

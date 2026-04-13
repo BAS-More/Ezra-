@@ -1,5 +1,5 @@
 {
-  "name": "ezra",
+  "name": "ezra-flow",
   "version": "3.5.52",
   "description": "Ezra (עזרא) - The Scribe Who Restores and Enforces Standards. Enterprise AI agent orchestration for Claude Code. Deploy 60+ specialized agents in coordinated swarms with self-learning, fault-tolerant consensus, vector memory, and MCP integration",
   "main": "dist/index.js",

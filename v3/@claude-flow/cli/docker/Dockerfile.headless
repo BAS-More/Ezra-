@@ -18,7 +18,7 @@ RUN apk add --no-cache git
 WORKDIR /install
 
 # Install ezra with --omit=optional to skip heavy transitive deps
-RUN npm install -g ezra@latest \
+RUN npm install -g ezra-flow@latest \
       --omit=optional \
       --ignore-scripts \
       --no-audit \
@@ -27,7 +27,7 @@ RUN npm install -g ezra@latest \
 
 # Prune heavy optional transitive deps (CLI works without them)
 RUN GLOBAL_PREFIX=$(npm config get prefix) \
-    && CLI_NM="${GLOBAL_PREFIX}/lib/node_modules/ezra/node_modules" \
+    && CLI_NM="${GLOBAL_PREFIX}/lib/node_modules/ezra-flow/node_modules" \
     && rm -rf \
       "${CLI_NM}/agentic-flow" \
       "${CLI_NM}/@opentelemetry" \
@@ -87,7 +87,7 @@ COPY --from=build /staged/lib/node_modules /usr/local/lib/node_modules
 COPY --from=build /staged/bin/ /usr/local/bin/
 
 # Ensure bin symlinks
-RUN ln -sf /usr/local/lib/node_modules/ezra/bin/ezra.js /usr/local/bin/ezra 2>/dev/null || true \
+RUN ln -sf /usr/local/lib/node_modules/ezra-flow/bin/ezra.js /usr/local/bin/ezra 2>/dev/null || true \
     && ln -sf /usr/local/lib/node_modules/@claude-flow/cli/bin/cli.js /usr/local/bin/claude-flow 2>/dev/null || true \
     && chmod +x /usr/local/bin/ezra 2>/dev/null || true \
     && chmod +x /usr/local/bin/claude-flow 2>/dev/null || true

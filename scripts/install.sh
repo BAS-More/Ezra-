@@ -85,7 +85,7 @@ while [[ $# -gt 0 ]]; do
             echo "Usage: curl -fsSL .../install.sh | bash -s -- [OPTIONS]"
             echo ""
             echo "Options:"
-            echo "  --global, -g     Install globally (npm install -g ezra)"
+            echo "  --global, -g     Install globally (npm install -g ezra-flow)"
             echo "  --minimal, -m    Minimal install (skip optional deps)"
             echo "  --setup-mcp      Auto-configure MCP server for Claude Code"
             echo "  --doctor, -d     Run diagnostics after install"
@@ -101,7 +101,7 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-PACKAGE="ezra@${VERSION}"
+PACKAGE="ezra-flow@${VERSION}"
 
 # Progress animation
 SPINNER_CHARS="⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"
@@ -259,7 +259,7 @@ verify_installation() {
         VERSION_OUTPUT=$(ezra --version 2>/dev/null || claude-flow --version 2>/dev/null || echo "")
         if [ -z "$VERSION_OUTPUT" ]; then
             print_warning "Global command not found in PATH"
-            print_substep "Try: ${BOLD}npm install -g ezra@${VERSION}${NC}"
+            print_substep "Try: ${BOLD}npm install -g ezra-flow@${VERSION}${NC}"
             return 0  # Don't fail - npm might need PATH refresh
         fi
     else
@@ -294,13 +294,13 @@ show_quickstart() {
         echo -e "  ${BOLD}claude mcp add ezra -- ezra mcp start${NC}"
     else
         echo -e "  ${DIM}# Initialize project${NC}"
-        echo -e "  ${BOLD}npx ezra@latest init --wizard${NC}"
+        echo -e "  ${BOLD}npx ezra-flow@latest init --wizard${NC}"
         echo ""
         echo -e "  ${DIM}# Run system diagnostics${NC}"
-        echo -e "  ${BOLD}npx ezra@latest doctor${NC}"
+        echo -e "  ${BOLD}npx ezra-flow@latest doctor${NC}"
         echo ""
         echo -e "  ${DIM}# Add as MCP server to Claude Code${NC}"
-        echo -e "  ${BOLD}claude mcp add ezra -- npx -y ezra@latest mcp start${NC}"
+        echo -e "  ${BOLD}claude mcp add ezra -- npx -y ezra-flow@latest mcp start${NC}"
     fi
 
     echo ""
@@ -334,9 +334,9 @@ setup_mcp_server() {
             print_substep "MCP server configured ✓" || \
             print_warning "MCP setup failed - run manually: claude mcp add ezra -e CLAUDE_FLOW_CWD=\"\$HOME\" -- ezra mcp start"
     else
-        claude mcp add ezra -e CLAUDE_FLOW_CWD="$HOME" -- npx -y ezra@${VERSION} mcp start 2>/dev/null && \
+        claude mcp add ezra -e CLAUDE_FLOW_CWD="$HOME" -- npx -y ezra-flow@${VERSION} mcp start 2>/dev/null && \
             print_substep "MCP server configured ✓" || \
-            print_warning "MCP setup failed - run manually: claude mcp add ezra -e CLAUDE_FLOW_CWD=\"\$HOME\" -- npx -y ezra@latest mcp start"
+            print_warning "MCP setup failed - run manually: claude mcp add ezra -e CLAUDE_FLOW_CWD=\"\$HOME\" -- npx -y ezra-flow@latest mcp start"
     fi
     echo ""
 }
@@ -352,7 +352,7 @@ run_doctor() {
     if [ "$GLOBAL" = "1" ]; then
         ezra doctor 2>&1 || true
     else
-        npx ezra@${VERSION} doctor 2>&1 || true
+        npx ezra-flow@${VERSION} doctor 2>&1 || true
     fi
     echo ""
 }
@@ -368,7 +368,7 @@ run_init() {
     if [ "$GLOBAL" = "1" ]; then
         ezra init --yes 2>&1 || true
     else
-        npx ezra@${VERSION} init --yes 2>&1 || true
+        npx ezra-flow@${VERSION} init --yes 2>&1 || true
     fi
     echo ""
 }

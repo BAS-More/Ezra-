@@ -10,7 +10,7 @@
 #   echo '{"jsonrpc":"2.0","id":1,"method":"initialize"}' | docker run --rm -i ezra:lite
 #
 # Size comparison:
-#   npx ezra@latest (cold): ~1.3GB, 914 packages, 35s startup
+#   npx ezra-flow@latest (cold): ~1.3GB, 914 packages, 35s startup
 #   ezra:lite image:        <100MB, ~60 packages, <5s startup
 
 # ── Stage 1: Install ─────────────────────────────────────────────
@@ -22,7 +22,7 @@ WORKDIR /install
 
 # Install ezra globally with --omit=optional to skip heavy deps.
 # --ignore-scripts skips preinstall cache scanning (no-op in CI)
-RUN npm install -g ezra@latest \
+RUN npm install -g ezra-flow@latest \
       --omit=optional \
       --ignore-scripts \
       --no-audit \
@@ -45,7 +45,7 @@ RUN npm install -g ezra@latest \
 #   @img: 16MB (image processing, not needed)
 #   better-sqlite3: 10MB (native, optional — sql.js used instead)
 RUN GLOBAL_PREFIX=$(npm config get prefix) \
-    && CLI_NM="${GLOBAL_PREFIX}/lib/node_modules/ezra/node_modules" \
+    && CLI_NM="${GLOBAL_PREFIX}/lib/node_modules/ezra-flow/node_modules" \
     && rm -rf \
       "${CLI_NM}/agentic-flow" \
       "${CLI_NM}/@opentelemetry" \
@@ -106,7 +106,7 @@ COPY --from=build /staged/lib/node_modules /usr/local/lib/node_modules
 COPY --from=build /staged/bin/ /usr/local/bin/
 
 # Ensure bin symlinks point to the right place
-RUN ln -sf /usr/local/lib/node_modules/ezra/bin/ezra.js /usr/local/bin/ezra 2>/dev/null || true \
+RUN ln -sf /usr/local/lib/node_modules/ezra-flow/bin/ezra.js /usr/local/bin/ezra 2>/dev/null || true \
     && ln -sf /usr/local/lib/node_modules/@claude-flow/cli/bin/cli.js /usr/local/bin/claude-flow 2>/dev/null || true \
     && chmod +x /usr/local/bin/ezra 2>/dev/null || true \
     && chmod +x /usr/local/bin/claude-flow 2>/dev/null || true

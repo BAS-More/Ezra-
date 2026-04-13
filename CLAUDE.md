@@ -856,14 +856,14 @@ npm dist-tag add claude-flow@3.0.0-alpha.XXX alpha
 cd /workspaces/claude-flow/ruflo
 npm version 3.0.0-alpha.XXX --no-git-tag-version
 npm publish --tag alpha
-npm dist-tag add ezra@3.0.0-alpha.XXX latest
+npm dist-tag add ezra-flow@3.0.0-alpha.XXX latest
 ```
 
 **Verification (run before telling user):**
 ```bash
 npm view @claude-flow/cli dist-tags --json
 npm view claude-flow dist-tags --json
-npm view ezra dist-tags --json
+npm view ezra-flow dist-tags --json
 # ALL THREE packages need: alpha AND latest pointing to newest version
 ```
 
@@ -876,12 +876,12 @@ npm view ezra dist-tags --json
 | `claude-flow` | `alpha` | `npx claude-flow@alpha` — EASY TO FORGET |
 | `claude-flow` | `latest` | `npx claude-flow@latest` |
 | `claude-flow` | `v3alpha` | `npx claude-flow@v3alpha` |
-| `ezra` | `alpha` | `npx ezra@alpha` — EASY TO FORGET |
-| `ezra` | `latest` | `npx ezra@latest` |
+| `ezra-flow` | `alpha` | `npx ezra-flow@alpha` — EASY TO FORGET |
+| `ezra-flow` | `latest` | `npx ezra-flow@latest` |
 
-- Never forget the `ezra` package — it's a thin wrapper users run via `npx ezra@alpha`
+- Never forget the `ezra-flow` package — it's a thin wrapper users run via `npx ezra-flow@alpha`
 - Never forget the umbrella `alpha` tag — users run `npx claude-flow@alpha`
-- `ezra` source is in `/ruflo/` — it depends on `@claude-flow/cli`
+- `ezra-flow` source is in `/ruflo/` — it depends on `@claude-flow/cli`
 
 ## Plugin Registry Maintenance (IPFS/Pinata)
 

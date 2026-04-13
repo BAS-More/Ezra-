@@ -1311,7 +1311,7 @@ async function writeInitialMetrics(
         patternsLearned: 0,
         sessionsCompleted: 0
       },
-      _note: 'Metrics will update as you use Ezra. Run: npx ezra@latest daemon start'
+      _note: 'Metrics will update as you use Ezra. Run: npx ezra-flow@latest daemon start'
     };
     fs.writeFileSync(progressPath, JSON.stringify(progress, null, 2), 'utf-8');
     result.created.files.push('.claude-flow/metrics/v3-progress.json');
@@ -1749,7 +1749,7 @@ npx @claude-flow/cli@latest hive-mind consensus --propose "task"
 ### MCP Server Setup
 \`\`\`bash
 # Add Ezra MCP
-claude mcp add ezra -- npx -y ezra@latest
+claude mcp add ezra -- npx -y ezra-flow@latest
 
 # Optional servers
 claude mcp add ruv-swarm -- npx -y ruv-swarm mcp start
@@ -1763,24 +1763,24 @@ claude mcp add flow-nexus -- npx -y flow-nexus@latest mcp start
 ### Essential Commands
 \`\`\`bash
 # Setup
-npx ezra@latest init --wizard
-npx ezra@latest daemon start
-npx ezra@latest doctor --fix
+npx ezra-flow@latest init --wizard
+npx ezra-flow@latest daemon start
+npx ezra-flow@latest doctor --fix
 
 # Swarm
-npx ezra@latest swarm init --topology hierarchical --max-agents 8
-npx ezra@latest swarm status
+npx ezra-flow@latest swarm init --topology hierarchical --max-agents 8
+npx ezra-flow@latest swarm status
 
 # Agents
-npx ezra@latest agent spawn -t coder
-npx ezra@latest agent list
+npx ezra-flow@latest agent spawn -t coder
+npx ezra-flow@latest agent list
 
 # Memory
-npx ezra@latest memory search --query "patterns"
+npx ezra-flow@latest memory search --query "patterns"
 
 # Hooks
-npx ezra@latest hooks pre-task --description "task"
-npx ezra@latest hooks worker dispatch --trigger optimize
+npx ezra-flow@latest hooks pre-task --description "task"
+npx ezra-flow@latest hooks worker dispatch --trigger optimize
 \`\`\`
 
 ### File Structure

@@ -14,7 +14,7 @@
 
 ### The Problem
 
-`npx ezra@latest` installs **1.3GB** across 914 packages with a 35-second cold start in Docker. The Docker optimization work (Dockerfile.lite with `--omit=optional` + aggressive pruning) reduced this to 324MB, but the **core dependency chain** still carries unnecessary weight:
+`npx ezra-flow@latest` installs **1.3GB** across 914 packages with a 35-second cold start in Docker. The Docker optimization work (Dockerfile.lite with `--omit=optional` + aggressive pruning) reduced this to 324MB, but the **core dependency chain** still carries unnecessary weight:
 
 ```
 ezra (5KB wrapper)
@@ -1219,7 +1219,7 @@ Backward Compatibility Tests:
 ### The Problem
 
 Current install paths are all-or-nothing:
-- `npx ezra@latest` installs 1.3GB (all optional deps)
+- `npx ezra-flow@latest` installs 1.3GB (all optional deps)
 - `--omit=optional` drops to ~30MB but loses all intelligence features
 - Users who want _some_ advanced features must install _all_ of them
 
