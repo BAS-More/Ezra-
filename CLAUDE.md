@@ -1084,6 +1084,21 @@ npx claude-flow@v3alpha plugins publish
 
 Registry source: IPFS via Pinata (`QmXbfEAaR7D2Ujm4GAkbwcGZQMHqAMpwDoje4583uNP834`)
 
+## Watchdog Security Integration
+
+Ezra can integrate with the Watchdog security platform for real-time threat monitoring.
+To enable, add the Watchdog MCP server:
+
+```bash
+claude mcp add watchdog -- npx watchdog-mcp
+```
+
+Key tools: `watchdog_status`, `watchdog_threats`, `watchdog_scan`, `hub_activate_formation`
+
+Skills: `/watchdog:status` (security dashboard), `/watchdog:defend` (activate formations)
+
+Agent routing: Use agent type `watchdog-security` or routing code 9 for security tasks with Watchdog integration.
+
 ## Support
 
 - Documentation: https://github.com/ruvnet/claude-flow

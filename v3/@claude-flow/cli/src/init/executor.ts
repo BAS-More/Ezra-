@@ -77,6 +77,10 @@ const SKILLS_MAP: Record<string, string[]> = {
     'v3-security-overhaul',
     'v3-swarm-coordination',
   ],
+  watchdog: [
+    'watchdog-status',
+    'watchdog-defend',
+  ],
 };
 
 /**
@@ -1744,6 +1748,7 @@ npx @claude-flow/cli@latest hive-mind consensus --propose "task"
 |---------|---------|
 | ruv-swarm | \`npx ruv-swarm mcp start\` |
 | flow-nexus | \`npx flow-nexus@latest mcp start\` |
+| watchdog-mcp | \`npx watchdog-mcp\` |
 | agentic-jujutsu | \`npx agentic-jujutsu@latest\` |
 
 ### MCP Server Setup
@@ -1754,6 +1759,7 @@ claude mcp add ezra -- npx -y ezra-flow@latest
 # Optional servers
 claude mcp add ruv-swarm -- npx -y ruv-swarm mcp start
 claude mcp add flow-nexus -- npx -y flow-nexus@latest mcp start
+claude mcp add watchdog -- npx watchdog-mcp
 \`\`\`
 
 ---
