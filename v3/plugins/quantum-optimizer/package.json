@@ -90,11 +90,16 @@
   "devDependencies": {
     "@types/node": "^20.0.0",
     "typescript": "^5.4.0",
-    "vitest": "^1.0.0"
+    "vitest": "^4.1.4"
   },
   "optionalDependencies": {
     "@ruvector/exotic-wasm": "^0.1.0",
     "@ruvector/dag-wasm": "^0.1.0",
     "@ruvector/sparse-inference-wasm": "^0.1.0"
+  },
+  "overrides": {
+    "vite": ">=7.3.2",
+    "brace-expansion": ">=2.0.3",
+    "minimatch": ">=9.0.7"
   }
 }
